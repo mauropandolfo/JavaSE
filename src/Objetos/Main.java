@@ -28,9 +28,23 @@ public class Main {
 			System.out.println("Ingrese el tipo de DNI de la persona [" + ( i + 1 ) + "]");
 			String tipoDoc = input.next();
 			aux.setTipoDoc(tipoDoc);
+			
 			System.out.println("Ingrese el numero de documento de la persona [" + ( i + 1 ) + "]");
-			int documento = input.nextInt();
-			aux.setDocumento(documento);
+			try {
+				int documento = input.nextInt();
+				if(documento < 0 ) {
+					throw new Exceptiones(2);
+				}
+				aux.setDocumento(documento);
+				
+			}
+			catch(RuntimeException e){
+				System.out.println("Se ingreso algo que no es un numero " + e.getMessage());
+			} catch (Exceptiones e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
 			System.out.println("Ingrese la edad de la persona [" + ( i + 1 ) + "]");
 			String edad = input.next();
 			aux.setApellido(edad);
